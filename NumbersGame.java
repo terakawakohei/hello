@@ -17,14 +17,26 @@ public  void askNumber(){
 
         //解答できる数
         int limit=5;
+
         while(limit>0){
+        System.out.println("2桁の整数を入力してください (残り: "+limit+"回)");
         int inputNumber=inputPositiveNumber();
+
         if(target==inputNumber){
-        System.out.println("正解！ゲームクリアです");
+        System.out.println("当たり");
         break;
         }else{
         System.out.println("不正解...");
+
+        limit--;
+        if(limit==0){
+        System.out.println("挑戦可能回数が0になったため、終了します");
+            break;
+        }
+        
         int diff=target-inputNumber;
+        System.out.println("----------------ヒント-------------");
+
         if(diff>0){
         System.out.println("→ 正解値より小さいです");
         }else {
@@ -34,9 +46,11 @@ public  void askNumber(){
         if(Math.abs(diff)>20){
         System.out.println("→ 20以上差があります");
         }
+        
         }
 
-        limit--;
+        System.out.println("-----------------------------------");
+
         }
 }
 public static void main(String[] args) {
