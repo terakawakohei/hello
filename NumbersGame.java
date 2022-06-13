@@ -1,9 +1,12 @@
 public class NumbersGame {
+    public static final int UPPER_LIMIT = 100;
+    public static final int LOWER_LIMIT = 0;
+    public static final int TARGET = 24;
 
     public int inputPositiveNumber() {
         int inputNumber = KeyBoard.inputNumber();
 
-        while (inputNumber < 0 || inputNumber > 100) {
+        while (inputNumber < LOWER_LIMIT || inputNumber > UPPER_LIMIT) {
             System.out.println("値が相応しくありません。もう一度、2桁の整数を入力してください");
             inputNumber = KeyBoard.inputNumber();
         }
@@ -11,7 +14,7 @@ public class NumbersGame {
     }
 
     public void askNumber() {
-        int target = 24;
+        int target = TARGET;
         System.out.println("数当てゲームを始めます");
         System.out.println("2桁の整数を入力してください :");
 
