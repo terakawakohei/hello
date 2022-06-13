@@ -2,6 +2,7 @@ public class NumbersGame {
     public static final int UPPER_LIMIT = 100;
     public static final int LOWER_LIMIT = 0;
     public static final int TARGET = 24;
+    public static final int LIMIT_NUM = 5;
 
     public int inputPositiveNumber() {
         int inputNumber = KeyBoard.inputNumber();
@@ -19,24 +20,33 @@ public class NumbersGame {
         System.out.println("2桁の整数を入力してください :");
 
         // 解答できる数
-        int limit = 5;
+        int limit = LIMIT_NUM;
 
+        // 挑戦回数がなくなるまで繰り返し
         while (limit > 0) {
             System.out.println("2桁の整数を入力してください (残り: " + limit + "回)");
             int inputNumber = inputPositiveNumber();
 
             if (target == inputNumber) {
                 System.out.println("当たり");
+                // 終了
                 break;
             } else {
                 System.out.println("不正解...");
 
                 limit--;
+                // 挑戦権がなくなったら、終了
                 if (limit == 0) {
+                    System.out.println("-----------------------------------");
+                    System.out.println("-----------------------------------");
+                    System.out.println("-----------------------------------");
+
+                    System.out.println("正解の値は..." + target + "でした");
                     System.out.println("挑戦可能回数が0になったため、終了します");
                     break;
                 }
 
+                // diff:目標値と入力値のずれ
                 int diff = target - inputNumber;
                 System.out.println("----------------ヒント-------------");
 
@@ -60,7 +70,6 @@ public class NumbersGame {
     public static void main(String[] args) {
 
         NumbersGame n = new NumbersGame();
-        n.askNumber(); // 単語の入力
-
+        n.askNumber();
     }
 }
